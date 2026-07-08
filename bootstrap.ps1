@@ -38,4 +38,4 @@ else {
     git -C $installPath pull
 }
 
-& (Join-Path $path "install.ps1")
+& (Join-Path $installPath "install.ps1")
