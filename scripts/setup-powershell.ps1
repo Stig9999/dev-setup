@@ -1,7 +1,12 @@
 $ErrorActionPreference = "Stop"
 
-Write-Host "Configuring PowerShell..." -ForegroundColor Cyan
+Write-Step "Configuring PowerShell"
+
+$profileSource = Join-Path $PSScriptRoot "..\powershell\Microsoft.PowerShell_profile.ps1"
+$profileDestination = $PROFILE.CurrentUserCurrentHost
 
 Copy-File `
-    -Source (Join-Path $PSScriptRoot "..\powershell\Microsoft.PowerShell_profile.ps1") `
-    -Destination $PROFILE.CurrentUserCurrentHost
+    -Source $profileSource `
+    -Destination $profileDestination
+
+Write-Success "PowerShell profile configured."
