@@ -1,11 +1,17 @@
+Write-Step "Installing applications"
+
 $packages = @(
-    "Microsoft.WindowsTerminal",
     "Microsoft.PowerShell",
+    "Microsoft.WindowsTerminal",
     "JanDeDobbeleer.OhMyPosh",
     "JetBrains.Toolbox",
-    "Git.Git"
+    "Microsoft.VisualStudioCode",
+    "Kubernetes.kubectl",
+    "Docker.DockerDesktop"
 )
 
 foreach ($package in $packages) {
     Install-WingetPackage $package
 }
+
+Write-Success "Applications installed."
