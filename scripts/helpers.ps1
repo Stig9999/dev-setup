@@ -18,3 +18,18 @@ function Install-WingetPackage {
         --accept-package-agreements `
         --accept-source-agreements
 }
+
+function Copy-File {
+    param(
+        [string] $Source,
+        [string] $Destination
+    )
+
+    $directory = Split-Path $Destination
+
+    if (-not (Test-Path $directory)) {
+        New-Item -ItemType Directory -Path $directory -Force | Out-Null
+    }
+
+    Copy-Item $Source $Destination -Force
+}
