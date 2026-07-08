@@ -23,7 +23,7 @@ function Install-WingetPackage {
     }
 }
 
-Write-Host "Installing Git..."
+Write-Host "Installing Git..." -ForegroundColor Cyan
 Install-WingetPackage "Git.Git"
 
 # Refresh PATH so git is immediately avaiable
