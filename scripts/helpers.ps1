@@ -36,3 +36,13 @@ function Copy-File {
 
     Copy-Item $Source $Destination -Force
 }
+
+function Write-Step {
+    param(
+        [Parameter(Mandatory)]
+        [string] $Message
+    )
+
+    Write-Host
+    Write-Host "==> $Message" -ForegroundColor Cyan
+}
