@@ -5,11 +5,11 @@ function Install-WingetPackage {
     )
 
     if (winget list --id $Id --exact | Select-String $Id) {
-        Write-Host "$Id already installed" -ForegroundColor DarkGray
+        Write-Info "$Id is already installed."
         return
     }
 
-    Write-Host "Installing $Id..." -ForegroundColor Yellow
+    Write-Info "Installing $Id..."
 
     winget install `
         --id $Id `
@@ -17,6 +17,8 @@ function Install-WingetPackage {
         --source winget `
         --accept-package-agreements `
         --accept-source-agreements
+
+    Write-Success "$Id installed."
 }
 
 function Copy-File {
