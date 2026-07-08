@@ -1,6 +1,6 @@
 # Dev Setup
 
-This repository contains scripts and configuration for bootstrapping a new Windows development machine.
+This repository contains the scripts and configuration I use to bootstrap a new Windows development machine.
 
 ## Getting Started
 
@@ -12,10 +12,8 @@ irm https://raw.githubusercontent.com/Stig9999/dev-setup/main/bootstrap.ps1 | ie
 
 The bootstrap script will:
 
-- Install Git (if it's not already installed)
-- Clone this repository to your machine
-- Execute the installation script
-- Install and configure your development environment
-
-> [!NOTE]
-> The bootstrap script is designed to be idempotent, meaning it can be run multiple times without causing duplicate installations or unwanted side effects.
+- Install the required tools
+- Clone this repository
+- Configure my development environment
+- Apply PowerShell and Git settings
+- Install additional development utilities
