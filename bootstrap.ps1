@@ -1,7 +1,13 @@
 $ErrorActionPreference = "Stop"
 
 $repository = "https://github.com/Stig9999/dev-setup.git"
-$installPath = "$HOME\dev-setup"
+$installPath = Join-Path $HOME "dev-setup"
+
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+
+if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+    throw "winget was not found. Install App Installer from Microsoft Store."
+}
 
 function Install-WingetPackage {
     param([string]$Id)
@@ -32,4 +38,4 @@ else {
     git -C $installPath pull
 }
 
-& "$installPath\install.ps1"
+& (Join-Path $path "install.ps1")
