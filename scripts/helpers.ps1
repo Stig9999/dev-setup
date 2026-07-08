@@ -46,3 +46,39 @@ function Write-Step {
     Write-Host
     Write-Host "==> $Message" -ForegroundColor Cyan
 }
+
+function Write-Success {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Message
+    )
+
+    Write-Host "✔ $Message" -ForegroundColor Green
+}
+
+function Write-Warning {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Message
+    )
+
+    Write-Host "⚠ $Message" -ForegroundColor Yellow
+}
+
+function Write-Info {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Message
+    )
+
+    Write-Host "• $Message" -ForegroundColor DarkGray
+}
+
+function Write-ErrorMessage {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Message
+    )
+
+    Write-Host "✘ $Message" -ForegroundColor Red
+}
