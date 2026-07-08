@@ -21,7 +21,10 @@ function Install-WingetPackage {
 
 function Copy-File {
     param(
+        [Parameter(Mandatory)]
         [string] $Source,
+
+        [Parameter(Mandatory)]
         [string] $Destination
     )
 
