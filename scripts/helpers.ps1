@@ -66,7 +66,8 @@ function Ensure-WingetPackage {
             --exact `
             --source winget `
             --accept-package-agreements `
-            --accept-source-agreements
+            --accept-source-agreements `
+            --silent
 
         Write-Success "$Id installed."
         return
@@ -82,7 +83,8 @@ function Ensure-WingetPackage {
             --exact `
             --source winget `
             --accept-package-agreements `
-            --accept-source-agreements
+            --accept-source-agreements `
+            --silent
 
         Write-Success "$Id upgraded."
     }
