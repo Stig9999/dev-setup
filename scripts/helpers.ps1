@@ -14,7 +14,7 @@ function Write-Success {
         [string] $Message
     )
 
-    Write-Host "✔ $Message" -ForegroundColor Green
+    Write-Host "✔  $Message" -ForegroundColor Green
 }
 
 function Write-Info {
@@ -23,13 +23,13 @@ function Write-Info {
         [string] $Message
     )
 
-    Write-Host "• $Message" -ForegroundColor DarkGray
+    Write-Host "•  $Message" -ForegroundColor DarkGray
 }
 
 function Write-Warning {
     param([Parameter(Mandatory)][string] $Message)
 
-    Write-Host "⚠ $Message" -ForegroundColor Yellow
+    Write-Host "⚠  $Message" -ForegroundColor Yellow
 }
 
 function Copy-File {
