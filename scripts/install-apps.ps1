@@ -13,7 +13,7 @@ $packages = @(
 )
 
 foreach ($package in $packages) {
-    Install-WingetPackage $package
+    Ensure-WingetPackage $package
 }
 
 Write-Success "Applications installed."
