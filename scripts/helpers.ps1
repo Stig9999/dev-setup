@@ -72,3 +72,26 @@ function Install-WingetPackage {
 
     Write-Success "$Id installed."
 }
+
+function Upgrade-WingetPackage {
+    param(
+        [Parameter(Mandatory)]
+        [string] $Id
+    )
+
+    if (winget upgrade --id $Id --exact | Select-String $Id) {
+        Write-Info "Upgrading $Id..."
+
+        winget upgrade `
+            --id $Id `
+            --exact `
+            --source winget `
+            --accept-package-agreements `
+            --accept-source-agreements
+
+        Write-Success "$Id upgraded."
+        return
+    }
+
+    Write-Info "$Id is already up to date."
+}
