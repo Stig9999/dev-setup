@@ -19,7 +19,8 @@ function Install-WingetPackage {
             --exact `
             --source winget `
             --accept-package-agreements `
-            --accept-source-agreements
+            --accept-source-agreements `
+            --silent
     }
 }
 
