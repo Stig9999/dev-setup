@@ -50,36 +50,31 @@ function Copy-File {
     Copy-Item -Path $Source -Destination $Destination -Force
 }
 
-function Install-WingetPackage {
+function Ensure-WingetPackage {
     param(
         [Parameter(Mandatory)]
         [string] $Id
     )
 
-    if (winget list --id $Id --exact | Select-String $Id) {
-        Write-Info "$Id is already installed."
+    $installed = winget list --id $Id --exact | Select-String $Id
+
+    if (-not $installed) {
+        Write-Info "Installing $Id..."
+
+        winget install `
+            --id $Id `
+            --exact `
+            --source winget `
+            --accept-package-agreements `
+            --accept-source-agreements
+
+        Write-Success "$Id installed."
         return
     }
 
-    Write-Info "Installing $Id..."
+    $upgrade = winget upgrade --id $Id --exact | Select-String $Id
 
-    winget install `
-        --id $Id `
-        --exact `
-        --source winget `
-        --accept-package-agreements `
-        --accept-source-agreements
-
-    Write-Success "$Id installed."
-}
-
-function Upgrade-WingetPackage {
-    param(
-        [Parameter(Mandatory)]
-        [string] $Id
-    )
-
-    if (winget upgrade --id $Id --exact | Select-String $Id) {
+    if ($upgrade) {
         Write-Info "Upgrading $Id..."
 
         winget upgrade `
@@ -90,8 +85,8 @@ function Upgrade-WingetPackage {
             --accept-source-agreements
 
         Write-Success "$Id upgraded."
-        return
     }
-
-    Write-Info "$Id is already up to date."
+    else {
+        Write-Info "$Id is already up to date."
+    }
 }
